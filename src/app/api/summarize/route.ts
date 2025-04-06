@@ -84,7 +84,7 @@ async function translateToEnglish(text: string): Promise<string> {
         model: "gemini-2.0-flash",
         contents: createUserContent([
             text,
-            "Please translate the above text to English language, if it is not already in English. If it is already in English, please return the text as it is.",
+            "Please translate the above text to English language, if it is not already in English. If it is already in English, please return the text as it is. Note: Please dont add any extra information or context to the text. Just return the text as it is.",
         ]),
     });
     if (result.text) {
