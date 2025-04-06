@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Meeting from "../../../../../lib/models/meetings.model";
 
 function setCorsHeaders(res: NextResponse) {
-    res.headers.set("Access-Control-Allow-Origin", "chrome-extension://migdpmhjdmafhialnkenfjifhkcejmnh");
+    res.headers.set("Access-Control-Allow-Origin", `chrome-extension://${process.env.EXTENSION_ID}`);
     res.headers.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
     res.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
     res.headers.set("Access-Control-Allow-Credentials", "true");

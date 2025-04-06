@@ -12,7 +12,7 @@ const ai = new GoogleGenAI({
 });
 
 function setCorsHeaders(res: NextResponse) {
-    res.headers.set("Access-Control-Allow-Origin", "chrome-extension://migdpmhjdmafhialnkenfjifhkcejmnh");
+    res.headers.set("Access-Control-Allow-Origin", `chrome-extension://${process.env.EXTENSION_ID}`);
     res.headers.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
     res.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
     res.headers.set("Access-Control-Allow-Credentials", "true");
@@ -84,7 +84,7 @@ async function translateToEnglish(text: string): Promise<string> {
         model: "gemini-2.0-flash",
         contents: createUserContent([
             text,
-            "Please translate the above text to English language.",
+            "Please translate the above text to English language, if it is not already in English. If it is already in English, please return the text as it is.",
         ]),
     });
     if (result.text) {
