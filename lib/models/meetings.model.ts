@@ -9,9 +9,9 @@ export interface IMeeting extends Document {
 
 const meetingSchema: Schema<IMeeting> = new Schema({
     userEmail: { type: String, required: true },
-    transcript: { type: String, required: true, default: "No Transcript Provided" },
-    summary: { type: String, required: true, default: "No Summary Generated" },
-    actionItems: { type: [String], default: [] }
+    transcript: { type: String, required: true },
+    summary: { type: String, required: true },
+    actionItems: { type: [String], required: true },
 }, {
     timestamps: true
 });
